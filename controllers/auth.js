@@ -98,6 +98,11 @@ exports.forgotPassword = asyncHandler(async (req, res, next) => {
 
 		return next(new ErrorResponse(`Email could not be sent`, 500));
 	}
+
+	res.status(200).json({
+		success: true,
+		data: user
+	})
 });
 
 // @desc        Reset password
@@ -123,7 +128,7 @@ exports.resetPassword = asyncHandler(async (req, res, next) => {
 	user.password = req.body.password;
 	user.resetPasswordToken = undefined;
 	user.resetPasswordExpire = undefined;
-	await user.save({ validateBeforeSave: false });
+	await user.save();
 
 	sendTokenResponse(user, 200, res);
 });
