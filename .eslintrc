@@ -1,11 +1,18 @@
 {
-  "extends": ["wesbos"],
+  "extends": [
+    "wesbos"
+  ],
   "rules": {
     "no-use-before-define": [
       "error",
       {
-        "functions": false,
-        "classes": true
+        "functions": false
+      }
+    ],
+    "no-plusplus": [
+      "error",
+      {
+        "allowForLoopAfterthoughts": true
       }
     ],
     "prettier/prettier": [
@@ -13,7 +20,8 @@
       {
         "trailingComma": "es5",
         "singleQuote": true,
-        "printWidth": 140
+        "printWidth": 120,
+        "useTabs": true
       }
     ]
   }
